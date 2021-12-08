@@ -52,6 +52,9 @@ def minor_ninth(note: int) -> int:
 def major_ninth(note: int) -> int:
     return major_second(octave(note))
 
+def augmented_ninth(note: int) -> int:
+    return augmented_second(octave(note))
+
 def major_eleventh(note: int) -> int:
     return perfect_fourth(octave(note))
 

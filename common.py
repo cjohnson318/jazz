@@ -1,5 +1,5 @@
 MAX_VOLUME = 127
-PAUSE = 0.4
+PAUSE = 0.2
 STRUM = 0.04
 
 UP   = 'UP'
@@ -28,7 +28,7 @@ def generate_notes(octave: int):
     diff = octave - 5
     result = []
     for note in NOTES_5TH_OCTAVE:
-        result.append(note + diff*12)
+        result.append(note + diff * 12)
     return result
 
 ALL_NAMES = generate_names(octave=4) + generate_names(octave=5) + generate_names(octave=6)
