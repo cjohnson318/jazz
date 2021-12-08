@@ -1,5 +1,5 @@
 import chords
-from common import UP, DOWN, NOTE_TO_NAME
+from common import UP, DOWN
 
 def chord_difference(prv: list[int], nxt: list[int]) -> int:
     if len(prv) > len(nxt):
