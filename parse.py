@@ -1,6 +1,5 @@
 import pygame.midi
 
-from common import *
 import chords
 
 
