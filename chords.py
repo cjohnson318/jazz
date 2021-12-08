@@ -1,6 +1,6 @@
 from typing import Union
 
-from common import *
+from common import UP, DOWN, NAMES, NAME_TO_NOTE
 from interval import *
 
 def interpret(root: Union[int, str]) -> list[int]:
