@@ -5,6 +5,16 @@ a MIDI device.
 
 ## Setup
 
+This project includes a `requirements.txt`, so you can use it with a virtual
+environment like so,
+
+```bash
+cd jazz
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
 To use this, you'll need to setup a MIDI device to play the MIDI data output by
 the program.
 
