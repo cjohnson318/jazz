@@ -26,51 +26,14 @@ def parse_chord(chord: str) -> list[int]:
     '''
     token = _parse_chord_parts(chord)
     print(token)
-    name = token['name']
-    quality = token['quality']
-    extension = token['extension']
-    alteration = token['alteration']
+    name = token.get('name')
+    quality = token.get('quality')
     if quality == 'MIN':
-        if extension == '6':
-            return chords.minor6(name)
-        elif extension == '7':
-            if alteration == ['b5']:
-                return chords.halfdim7(name)
-            elif alteration == ['b9']:
-                return chords.minor7_flat9(name)
-            elif alteration == ['#9']:
-                return chords.minor7_sharp9(name)
-            return chords.minor7(name)
-        elif extension == '9':
-            return chords.minor9(name)
-        else:
-            return chords.minor(name)
+        return _resolve_minor_chord(token)
     elif quality == 'MAJ':
-        if extension == '6':
-            return chords.major6(name)
-        elif extension == '7':
-            if alteration == ['b9']:
-                return chords.major7_flat9(name)
-            elif alteration == ['#9']:
-                return chords.major7_sharp9(name)
-            elif alteration == ['#11']:
-                return chords.major_sharp11(name)
-            return chords.major7(name)
-        elif extension == '9':
-            return chords.major9(name)
-        else:
-            return chords.major(name)
+        return _resolve_major_chord(token)
     elif quality == 'DOM':
-        if extension == '7':
-            if alteration == ['b9']:
-                return chords.dominant7_flat9(name)
-            elif alteration == ['#9']:
-                return chords.dominant7_sharp9(name)
-            return chords.dominant7(name)
-        elif extension == '9':
-            return chords.dominant9(name)
-        else:
-            return chords.dominant(name)
+        return _resolve_dominant_chord(token)
     elif quality == 'HDIM':
         return chords.halfdim7(name)
     elif quality == 'FDIM':
@@ -143,3 +106,59 @@ def _parse_chord_alteration(chord: list[str]) -> list[str]:
                 alterations.append(alteration)
                 chord = chord[2:]
     return alterations
+
+def _resolve_minor_chord(token):
+    name = token.get('name')
+    quality = token.get('quality')
+    extension = token.get('extension')
+    alteration = token.get('alteration')
+    if extension == '6':
+        return chords.minor6(name)
+    elif extension == '7':
+        if alteration == ['b5']:
+            return chords.halfdim7(name)
+        elif alteration == ['b9']:
+            return chords.minor7_flat9(name)
+        elif alteration == ['#9']:
+            return chords.minor7_sharp9(name)
+        return chords.minor7(name)
+    elif extension == '9':
+        return chords.minor9(name)
+    else:
+        return chords.minor(name)
+
+def _resolve_major_chord(token):
+    name = token.get('name')
+    quality = token.get('quality')
+    extension = token.get('extension')
+    alteration = token.get('alteration')
+    if extension == '6':
+        return chords.major6(name)
+    elif extension == '7':
+        if alteration == ['b9']:
+            return chords.major7_flat9(name)
+        elif alteration == ['#9']:
+            return chords.major7_sharp9(name)
+        elif alteration == ['#11']:
+            return chords.major_sharp11(name)
+        return chords.major7(name)
+    elif extension == '9':
+        return chords.major9(name)
+    else:
+        return chords.major(name)
+
+def _resolve_dominant_chord(token):
+    name = token.get('name')
+    quality = token.get('quality')
+    extension = token.get('extension')
+    alteration = token.get('alteration')
+    if extension == '7':
+        if alteration == ['b9']:
+            return chords.dominant7_flat9(name)
+        elif alteration == ['#9']:
+            return chords.dominant7_sharp9(name)
+        return chords.dominant7(name)
+    elif extension == '9':
+        return chords.dominant9(name)
+    else:
+        return chords.dominant(name)
