@@ -11,7 +11,7 @@ def chord_difference(prv: list[int], nxt: list[int]) -> int:
         result += abs(prv[i] - nxt[i])
     return result
 
-def voice_by_rotation(prv: list[int], nxt: list[int]):
+def voice_by_rotation(prv: list[int], nxt: list[int]) -> list[int]:
     action = 0
     difference = chord_difference(prv, nxt)
     while True:
