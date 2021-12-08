@@ -1,15 +1,24 @@
 import pygame.midi
 
 import chords
+import voicing
 
 
-def lead_sheet(filename: str) -> list[list[int]]:
+def lead_sheet(filename: str, voice_lead:bool=True) -> list[list[int]]:
     '''Take a file of chord names, and return a list of list of ints.
     '''
     score = open(filename, 'r').readlines()
     score = [line.strip() for line in score]
     score = ' '.join(score)
     score = score.split(' ')
+    if '/' in score:
+        score = expand_slashes(score)
+    score = list(map(parse_chord, score))
+    if voice_lead:
+        score = voicing.voice_score(score)
+    return score
+
+def expand_slashes(score: list[str]) -> list[str]:
     expanded = []
     for item in score:
         if item == '/':
@@ -17,8 +26,7 @@ def lead_sheet(filename: str) -> list[list[int]]:
         else:
             expanded.append(item)
         previous = expanded[-1]
-    score = list(map(parse_chord, expanded))
-    return score
+    return expanded
 
 def parse_chord(chord: str) -> list[int]:
     '''Turn a chord name into a list of ints, representing MIDI pitches.

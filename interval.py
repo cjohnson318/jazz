@@ -1,3 +1,5 @@
+from common import UP, DOWN
+
 def minor_second(note: int) -> int:
     return note + 1
 
@@ -43,8 +45,13 @@ def minor_seventh(note: int) -> int:
 def major_seventh(note: int) -> int:
     return note + 11
 
-def octave(note: int) -> int:
-    return note + 12
+def octave(note: int, direction=UP) -> int:
+    if direction == UP:
+        return note + 12
+    elif direction == DOWN:
+        return note - 12
+    else:
+        raise ValueError('Expected "UP" or "DOWN".')
 
 def minor_ninth(note: int) -> int:
     return minor_second(octave(note))

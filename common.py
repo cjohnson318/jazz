@@ -34,3 +34,4 @@ def generate_notes(octave: int):
 ALL_NAMES = generate_names(octave=4) + generate_names(octave=5) + generate_names(octave=6)
 ALL_NOTES = generate_notes(octave=4) + generate_notes(octave=5) + generate_notes(octave=6)
 NAME_TO_NOTE = dict(zip(ALL_NAMES, ALL_NOTES))
+NOTE_TO_NAME = dict(zip(ALL_NOTES, ALL_NAMES))

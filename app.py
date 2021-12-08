@@ -10,7 +10,7 @@ if __name__ == '__main__':
         filename = sys.argv[1]
     else:
         filename = 'blue-in-green.txt'
-    score = parse.lead_sheet(filename)
+    score = parse.lead_sheet(filename, voice_lead=True)
     
     utils.quit_listener()
     for chord in score:
