@@ -32,7 +32,7 @@ def parse_chord(chord: str) -> list[int]:
     '''Turn a chord name into a list of ints, representing MIDI pitches.
     '''
     token = _parse_chord_parts(chord)
-    print(token)
+    # print(token)
     name = token.get('name')
     quality = token.get('quality')
     if quality == 'MIN':
@@ -107,7 +107,6 @@ def _parse_chord_alteration(chord: list[str]) -> list[str]:
                 alterations.append(alteration)
                 chord = chord[3:]
         elif len(chord) >= 2:
-            print(f'chord: {chord}')
             alteration = ''.join(chord[:2])
             if alteration in ['b5', '#5', 'b9', '#9']:
                 alterations.append(alteration)

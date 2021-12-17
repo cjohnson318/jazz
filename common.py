@@ -35,3 +35,15 @@ ALL_NAMES = generate_names(octave=4) + generate_names(octave=5) + generate_names
 ALL_NOTES = generate_notes(octave=4) + generate_notes(octave=5) + generate_notes(octave=6)
 NAME_TO_NOTE = dict(zip(ALL_NAMES, ALL_NOTES))
 NOTE_TO_NAME = dict(zip(ALL_NOTES, ALL_NAMES))
+
+def note_to_name(note: int) -> str:
+    return NOTE_TO_NAME.get(note)
+
+def notes_to_names(notes: list[int]) -> list[str]:
+    return [note_to_name(note) for note in notes]
+
+def name_to_note(name: str) -> int:
+    return NAME_TO_NOTE.get(note)
+
+def names_to_notes(names: list[str]) -> list[int]:
+    return [name_to_note(name) for name in names]
