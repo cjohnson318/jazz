@@ -35,6 +35,7 @@ def voice_score(score: list[list[int]], voice=voice_by_rotation) -> list[list[in
     for i, item in enumerate(score):
         if i == 0:
             last_voicing = item
+            new_voicing.append(last_voicing)
             continue
         if item != last_voicing:
             original = item[:]
