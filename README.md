@@ -1,4 +1,4 @@
-# Jazz
+# JazzRobot
 
 Scripts to read chords from a file, and then generate MIDI data to be played by
 a MIDI device.
